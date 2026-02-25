@@ -8,8 +8,9 @@ asyncpg==0.29.0
 alembic==1.13.1
 greenlet==3.0.3
 
-# Validation
-pydantic==2.6.1
+# Validation (using versions with pre-built wheels)
+pydantic==2.5.3
+pydantic-core==2.14.6
 pydantic-settings==2.1.0
 
 # Security and middleware
