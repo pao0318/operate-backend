@@ -1,0 +1,10 @@
+from pydantic import BaseModel
+from typing import Any, List
+
+
+class QuarterlyDSCRResponse(BaseModel):
+    case_id: int
+    data_points: List[Any] = []
+    
+    class Config:
+        from_attributes = True

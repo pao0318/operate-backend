@@ -1,0 +1,151 @@
+### ============================================
+### FastAPI Backend API Tests
+### ============================================
+### Base URL: http://localhost:8000
+### Start the server with: python run.py
+### ============================================
+
+### Health Check
+GET http://localhost:8000/api/health
+
+### ============================================
+### SSE (Server-Sent Events) Endpoints
+### ============================================
+
+### SSE Health Check
+GET http://localhost:8000/api/sse/health
+
+### SSE Connection (Server-Sent Events)
+# This will keep the connection open and stream events
+GET http://localhost:8000/api/sse
+
+### Publish Navigation Event
+POST http://localhost:8000/api/navigation
+Content-Type: application/json
+
+{
+  "event": "navigation",
+  "data": {
+    "page": "dashboard",
+    "userId": "test-user-123",
+    "timestamp": "2026-02-25T18:00:00Z"
+  }
+}
+
+### ============================================
+### Available Services
+### ============================================
+
+### Get All Available Services
+GET http://localhost:8000/api/available-services
+
+### ============================================
+### Case Management APIs
+### ============================================
+
+### Get Case Details by ID
+GET http://localhost:8000/api/case/123
+
+### Get Documents for a Case
+GET http://localhost:8000/api/case/123/documents
+
+### Get Extracted Key Metrics for a Case
+GET http://localhost:8000/api/case/123/extracted-key-metrics
+
+### Get Covenant Status for a Case
+GET http://localhost:8000/api/case/123/covenant-status
+
+### Get Quarterly DSCR for a Case
+GET http://localhost:8000/api/case/123/quarterly-dscr
+
+### Get Quarter-by-Quarter Financial Drivers for a Case
+GET http://localhost:8000/api/case/123/quarter-by-quarter-financial-drivers
+
+### Get Q3 Highlights for a Case
+GET http://localhost:8000/api/case/123/q3-highlights
+
+### Get FR Y14 Schedule Template Data for a Case
+GET http://localhost:8000/api/case/123/fr-y14-schedule-template
+
+### Get Y14 Detailed Findings for a Case
+GET http://localhost:8000/api/case/123/y14-detailed-findings
+
+### Get Shipment Details for a Case
+GET http://localhost:8000/api/case/123/shipment-details
+
+### Get Operational Findings for a Case
+GET http://localhost:8000/api/case/123/operational-doc-scan-detailed-findings
+
+### Get Data Simulator Benefits for a Case
+GET http://localhost:8000/api/case/123/data-simulator-benefits
+
+### ============================================
+### Test with Different Case IDs
+### ============================================
+
+### Test with non-existent case (should return 404)
+GET http://localhost:8000/api/case/999999
+
+### Test with string case ID (should handle gracefully)
+GET http://localhost:8000/api/case/test-case-id
+
+### ============================================
+### Error Handling Tests
+### ============================================
+
+### Test invalid endpoint (should return 404)
+GET http://localhost:8000/api/nonexistent-endpoint
+
+### Test invalid method on existing endpoint (should return 405)
+POST http://localhost:8000/api/health
+
+### Test malformed JSON (should return 422)
+POST http://localhost:8000/api/navigation
+Content-Type: application/json
+
+{
+  "event": "navigation",
+  "data": {
+    "page": "dashboard"
+    // Missing closing brace - malformed JSON
+  }
+
+### ============================================
+### CORS Headers Test
+### ============================================
+
+### Test with Origin header to verify CORS
+GET http://localhost:8000/api/health
+Origin: http://localhost:3000
+
+### ============================================
+### Performance Tests
+### ============================================
+
+### Multiple concurrent requests (copy-paste multiple times)
+GET http://localhost:8000/api/health
+GET http://localhost:8000/api/health
+GET http://localhost:8000/api/health
+
+### ============================================
+### API Documentation
+### ============================================
+
+### Interactive API Docs (Swagger UI)
+# Open in browser: http://localhost:8000/docs
+
+### ReDoc Documentation
+# Open in browser: http://localhost:8000/redoc
+
+### OpenAPI Schema
+GET http://localhost:8000/openapi.json
+
+### ============================================
+### Notes:
+### ============================================
+### 1. Make sure the server is running before executing these requests
+### 2. For SSE endpoint, the connection will stay open - you'll see real-time events
+### 3. Case IDs used in examples (123) may not exist - expect empty results or 404s
+### 4. To test with real data, first insert some test records into the database
+### 5. Use VS Code REST Client extension or similar to execute these requests
+### 6. For POST requests with navigation events, you can modify the data payload as needed
