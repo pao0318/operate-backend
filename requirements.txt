@@ -1,6 +1,6 @@
 # FastAPI and ASGI server
-fastapi==0.109.2
-uvicorn[standard]==0.27.1
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
 
 # Database
 sqlalchemy==2.0.25
@@ -8,10 +8,9 @@ asyncpg==0.29.0
 alembic==1.13.1
 greenlet==3.0.3
 
-# Validation (using versions with pre-built wheels)
-pydantic==2.4.2
-pydantic-core==2.10.1
-pydantic-settings==2.0.3
+# Validation (Pydantic v1 - no Rust required)
+pydantic==1.10.13
+pydantic[dotenv]==1.10.13
 
 # Security and middleware
 python-multipart==0.0.9
