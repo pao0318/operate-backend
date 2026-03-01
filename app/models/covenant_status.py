@@ -7,7 +7,8 @@ from app.core.database import Base
 class CovenantStatus(Base):
     __tablename__ = "covenant_status"
     
-    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), nullable=False, index=True)
     name = Column(String(255), nullable=True)
     label = Column(String(255), nullable=True)
     value = Column(String(500), nullable=True)

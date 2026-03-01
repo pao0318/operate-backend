@@ -1,0 +1,42 @@
+[{"name":"Revenue",
+    "infoLines":["Revenue growth supports minimum turnover covenant, reducing risk of operating underperformance.","Stable YoY increase indicates low likelihood of cash-flow stress, supporting DSCR maintenance."],
+    "dataPoints":   {"Jan": 10.2,
+    "Feb": 10.8,
+    "Mar": 11.5,
+    "Apr": 12,
+    "May": 12.5}
+},{
+    "name":"EBITDA",
+    "infoLines":["Rising EBITDA strengthens Debt/EBITDA covenant compliance, improving borrower creditworthiness.","Sustained profitability trend reduces risk of breach on interest coverage or leverage covenants."],
+    "dataPoints":   {"Jan": 0.9,
+    "Feb": 1,
+    "Mar": 1.05,
+    "Apr": 1.1,
+    "May": 1.2}
+},{
+    "name":"Debt",
+    "infoLines":["Current leverage remains within allowable Debt/EBITDA thresholds, though trending upward.","Monitoring required to avoid breaching maximum leverage or total indebtedness covenants."],
+    "dataPoints":   {"Jan": 3.2,
+    "Feb": 3.4,
+    "Mar": 3.5,
+    "Apr": 3.7,
+    "May": 3.8}
+},{
+    "name":"Equity",
+    "infoLines":["Stable equity position supports Net Worth / Equity Maintenance covenants.","Equity cushion reduces risk of LTV covenant deterioration during adverse market cycles."],
+    "dataPoints":   {"Jan": 1,
+    "Feb": 1.05,
+    "Mar": 1.1,
+    "Apr": 1.15,
+    "May": 1.2}
+},
+{
+    "name":"Interest Expense",
+    "infoLines":["Rising interest expense may pressure Interest Coverage covenants if EBITDA slows.","Higher servicing costs could impact DSCR compliance, requiring ongoing monitoring."],
+    "dataPoints":   {"Jan": 180,
+    "Feb": 190,
+    "Mar": 195,
+    "Apr": 205,
+    "May": 210}
+}
+]

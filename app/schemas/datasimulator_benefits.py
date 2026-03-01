@@ -10,4 +10,4 @@ class DatasimulatorBenefitsResponse(BaseModel):
     compliance: Dict[str, Any] = {}
     
     class Config:
-        from_attributes = True
+        orm_mode = True

@@ -9,7 +9,7 @@ class FRY14DetailResponse(BaseModel):
     value: Optional[str] = None
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class FRY14DataPointResponse(BaseModel):
@@ -19,7 +19,7 @@ class FRY14DataPointResponse(BaseModel):
     details: List[FRY14DetailResponse] = []
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class FRY14ScheduleTemplateResponse(BaseModel):
@@ -27,4 +27,4 @@ class FRY14ScheduleTemplateResponse(BaseModel):
     data_points: List[FRY14DataPointResponse] = []
     
     class Config:
-        from_attributes = True
+        orm_mode = True

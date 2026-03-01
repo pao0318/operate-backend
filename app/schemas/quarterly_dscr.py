@@ -7,4 +7,4 @@ class QuarterlyDSCRResponse(BaseModel):
     data_points: List[Any] = []
     
     class Config:
-        from_attributes = True
+        orm_mode = True

@@ -11,6 +11,7 @@ class ShipmentDetail(Base):
     name = Column(String(255), nullable=False)
     promised_delivery_date = Column(Date, nullable=True)
     actual_delivery_date = Column(Date, nullable=True)
+    status = Column(String(50), nullable=True)
     case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), nullable=False, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())

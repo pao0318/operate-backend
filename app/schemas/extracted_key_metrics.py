@@ -10,4 +10,4 @@ class ExtractedKeyMetricsResponse(BaseModel):
     data_points: Dict[str, Any] = {}
     
     class Config:
-        from_attributes = True
+        orm_mode = True

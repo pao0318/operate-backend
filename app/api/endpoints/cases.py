@@ -22,6 +22,6 @@ async def get_case(
     
     return {
         "data": {
-            "case": CaseResponse.model_validate(case).model_dump()
+            "case": CaseResponse.from_orm(case).dict()
         }
     }

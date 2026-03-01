@@ -21,7 +21,7 @@ async def get_documents(
     return {
         "data": {
             "documents": [
-                DocumentResponse.model_validate(d).model_dump()
+                DocumentResponse.from_orm(d).dict()
                 for d in documents
             ]
         }

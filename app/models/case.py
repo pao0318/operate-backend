@@ -8,8 +8,10 @@ class Case(Base):
     __tablename__ = "cases"
     
     id = Column(Integer, primary_key=True, autoincrement=True)
+    case_no = Column(String(255), nullable=False)
     name = Column(String(255), nullable=False)
     description = Column(String(1000), nullable=True)
+    applied_by = Column(String(255), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     

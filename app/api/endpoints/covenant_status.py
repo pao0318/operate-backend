@@ -16,16 +16,21 @@ async def get_covenant_status(
     result = await db.execute(
         select(CovenantStatus).where(CovenantStatus.case_id == case_id)
     )
-    status = result.scalar_one_or_none()
+    statuses = result.scalars().all()
     
-    if not status:
+    if not statuses:
         raise NotFoundException(f"Covenant status for case {case_id} not found")
     
     return {
         "data": {
-            "caseId": status.case_id,
-            "name": status.name,
-            "label": status.label,
-            "value": status.value
+            "caseId": case_id,
+            "covenants": [
+                {
+                    "name": s.name,
+                    "label": s.label,
+                    "value": s.value
+                }
+                for s in statuses
+            ]
         }
     }

@@ -17,7 +17,7 @@ async def get_available_services(db: AsyncSession = Depends(get_db)):
     return {
         "data": {
             "services": [
-                AvailableServiceResponse.model_validate(s).model_dump()
+                AvailableServiceResponse.from_orm(s).dict()
                 for s in services
             ]
         }

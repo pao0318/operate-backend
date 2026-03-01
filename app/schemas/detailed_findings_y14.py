@@ -8,4 +8,4 @@ class DetailedFindingsY14Response(BaseModel):
     detailed_findings: List[Any] = []
     
     class Config:
-        from_attributes = True
+        orm_mode = True

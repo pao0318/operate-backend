@@ -16,19 +16,21 @@ async def get_extracted_key_metrics(
     result = await db.execute(
         select(ExtractedKeyMetrics).where(ExtractedKeyMetrics.case_id == case_id)
     )
-    metrics = result.scalar_one_or_none()
+    metrics_list = result.scalars().all()
     
-    if not metrics:
+    if not metrics_list:
         raise NotFoundException(f"Extracted key metrics for case {case_id} not found")
-    
-    data = metrics.data or {}
     
     return {
         "data": {
-            "name": metrics.name,
-            "caseId": metrics.case_id,
-            "infoLines": data.get("infoLines", []),
-            "description": metrics.description,
-            "dataPoints": data.get("dataPoints", {})
+            "caseId": case_id,
+            "metrics": [
+                {
+                    "name": m.name,
+                    "description": m.description,
+                    "dataPoints": m.data or {}
+                }
+                for m in metrics_list
+            ]
         }
     }

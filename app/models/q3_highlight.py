@@ -8,7 +8,8 @@ from app.core.database import Base
 class Q3Highlight(Base):
     __tablename__ = "q3_highlights"
     
-    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), nullable=False, index=True)
     name = Column(String(255), nullable=True)
     description = Column(String(1000), nullable=True)
     datalines = Column(ARRAY(String), nullable=True, default=[])

@@ -22,4 +22,4 @@ class CaseResponse(BaseModel):
     description: Optional[str] = None
     
     class Config:
-        from_attributes = True
+        orm_mode = True

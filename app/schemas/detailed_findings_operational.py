@@ -7,4 +7,4 @@ class DetailedFindingsOperationalResponse(BaseModel):
     findings: List[Dict[str, Any]] = []
     
     class Config:
-        from_attributes = True
+        orm_mode = True

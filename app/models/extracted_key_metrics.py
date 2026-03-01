@@ -8,7 +8,8 @@ from app.core.database import Base
 class ExtractedKeyMetrics(Base):
     __tablename__ = "extracted_key_metrics"
     
-    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    case_id = Column(Integer, ForeignKey("cases.id", ondelete="CASCADE"), nullable=False, index=True)
     name = Column(String(255), nullable=True)
     description = Column(String(1000), nullable=True)
     data = Column(JSONB, nullable=True, default={})

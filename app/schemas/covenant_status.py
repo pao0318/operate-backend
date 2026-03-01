@@ -9,4 +9,4 @@ class CovenantStatusResponse(BaseModel):
     value: Optional[str] = None
     
     class Config:
-        from_attributes = True
+        orm_mode = True

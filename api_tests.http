@@ -44,40 +44,40 @@ GET http://localhost:8000/api/available-services
 ### ============================================
 
 ### Get Case Details by ID
-GET http://localhost:8000/api/case/123
+GET http://localhost:8000/api/case/1
 
 ### Get Documents for a Case
-GET http://localhost:8000/api/case/123/documents
+GET http://localhost:8000/api/case/1/documents
 
 ### Get Extracted Key Metrics for a Case
-GET http://localhost:8000/api/case/123/extracted-key-metrics
+GET http://localhost:8000/api/case/1/extracted-key-metrics
 
 ### Get Covenant Status for a Case
-GET http://localhost:8000/api/case/123/covenant-status
+GET http://localhost:8000/api/case/1/covenant-status
 
 ### Get Quarterly DSCR for a Case
-GET http://localhost:8000/api/case/123/quarterly-dscr
+GET http://localhost:8000/api/case/1/quarterly-dscr
 
 ### Get Quarter-by-Quarter Financial Drivers for a Case
-GET http://localhost:8000/api/case/123/quarter-by-quarter-financial-drivers
+GET http://localhost:8000/api/case/1/quarter-by-quarter-financial-drivers
 
 ### Get Q3 Highlights for a Case
-GET http://localhost:8000/api/case/123/q3-highlights
+GET http://localhost:8000/api/case/1/q3-highlights
 
 ### Get FR Y14 Schedule Template Data for a Case
-GET http://localhost:8000/api/case/123/fr-y14-schedule-template
+GET http://localhost:8000/api/case/1/fr-y14-schedule-template
 
 ### Get Y14 Detailed Findings for a Case
-GET http://localhost:8000/api/case/123/y14-detailed-findings
+GET http://localhost:8000/api/case/1/y14-detailed-findings
 
 ### Get Shipment Details for a Case
-GET http://localhost:8000/api/case/123/shipment-details
+GET http://localhost:8000/api/case/1/shipment-details
 
 ### Get Operational Findings for a Case
-GET http://localhost:8000/api/case/123/operational-doc-scan-detailed-findings
+GET http://localhost:8000/api/case/1/operational-doc-scan-detailed-findings
 
 ### Get Data Simulator Benefits for a Case
-GET http://localhost:8000/api/case/123/data-simulator-benefits
+GET http://localhost:8000/api/case/1/data-simulator-benefits
 
 ### ============================================
 ### Test with Different Case IDs

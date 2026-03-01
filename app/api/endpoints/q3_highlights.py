@@ -16,16 +16,21 @@ async def get_q3_highlights(
     result = await db.execute(
         select(Q3Highlight).where(Q3Highlight.case_id == case_id)
     )
-    highlight = result.scalar_one_or_none()
+    highlights = result.scalars().all()
     
-    if not highlight:
+    if not highlights:
         raise NotFoundException(f"Q3 highlights for case {case_id} not found")
     
     return {
         "data": {
-            "caseId": highlight.case_id,
-            "name": highlight.name,
-            "description": highlight.description,
-            "datalines": highlight.datalines or []
+            "caseId": case_id,
+            "highlights": [
+                {
+                    "name": h.name,
+                    "description": h.description,
+                    "datalines": h.datalines or []
+                }
+                for h in highlights
+            ]
         }
     }

@@ -23,4 +23,4 @@ class DocumentResponse(BaseModel):
     filename: Optional[str] = None
     
     class Config:
-        from_attributes = True
+        orm_mode = True

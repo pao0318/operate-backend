@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.core.database import Base
@@ -25,6 +26,7 @@ class FRY14ScheduleTemplateDataPointDetail(Base):
     name = Column(String(255), nullable=False)
     label = Column(String(255), nullable=True)
     value = Column(String(500), nullable=True)
+    additional_data = Column(JSONB, nullable=True, default=None)
     template_data_point_id = Column(Integer, ForeignKey("fr_y14_schedule_template_data_points.id", ondelete="CASCADE"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
