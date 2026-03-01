@@ -15,6 +15,18 @@ services:
       pip install --upgrade pip
       pip install -r requirements.txt
       alembic upgrade head
+      python seed_cases.py
+      python seed_available_services.py
+      python seed_extracted_key_metrics_individual.py
+      python seed_covenant_status_data.py
+      python seed_quarterly_dscr.py
+      python seed_quarter_financial_drivers.py
+      python seed_q3_highlights.py
+      python seed_fry14_schedule_template.py
+      python seed_detailed_findings_y14.py
+      python seed_shipment_details.py
+      python seed_detailed_findings_operational.py
+      python seed_datasimulator_benefits.py
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: APP_ENV
@@ -24,7 +36,7 @@ services:
       - key: CORS_ORIGINS
         value: "*"
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: 3.11.9
       - key: DATABASE_URL
         fromDatabase:
           name: operate-db
