@@ -28,7 +28,9 @@ async def get_covenant_status(
                 {
                     "name": s.name,
                     "label": s.label,
-                    "value": s.value
+                    "value": s.value,
+                    "indicator": s.indicator,
+                    "status": s.status
                 }
                 for s in statuses
             ]

@@ -12,6 +12,8 @@ class CovenantStatus(Base):
     name = Column(String(255), nullable=True)
     label = Column(String(255), nullable=True)
     value = Column(String(500), nullable=True)
+    indicator = Column(String(100), nullable=True)
+    status = Column(String(100), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     

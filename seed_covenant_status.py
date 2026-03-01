@@ -45,15 +45,37 @@ async def seed_covenant_status():
                 print(f"Found {len(existing_records)} existing covenant status records. Skipping seed.")
                 return
             
-            # Create individual records for each financial metric
+            # Create covenant status records with proper data
+            covenant_data = [
+                {
+                    "name": "DSCR",
+                    "value": "1.10 (Below 1.25 Covenant)",
+                    "indicator": "Alert",
+                    "status": "alert"
+                },
+                {
+                    "name": "Debt/Equity",
+                    "value": "3.2x (Above 3.0 Threshold)",
+                    "indicator": "Warning",
+                    "status": "warning"
+                },
+                {
+                    "name": "Current Ratio",
+                    "value": "12.3 (Unusually high vs. 1.5–2.0 industry norm)",
+                    "indicator": "Alert",
+                    "status": "alert"
+                }
+            ]
+            
             covenant_records = []
-            for metric in financial_data:
-                # Create a covenant status record for each metric
+            for covenant in covenant_data:
                 record = CovenantStatus(
                     case_id=case.id,
-                    name=metric['name'],
-                    label=f"{metric['name']} Status",
-                    value=json.dumps(metric['dataPoints'])  # Store data points as JSON string
+                    name=covenant['name'],
+                    label=covenant['name'],
+                    value=covenant['value'],
+                    indicator=covenant['indicator'],
+                    status=covenant['status']
                 )
                 covenant_records.append(record)
             

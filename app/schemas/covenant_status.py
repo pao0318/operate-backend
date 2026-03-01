@@ -7,6 +7,8 @@ class CovenantStatusResponse(BaseModel):
     name: Optional[str] = None
     label: Optional[str] = None
     value: Optional[str] = None
+    indicator: Optional[str] = None
+    status: Optional[str] = None
     
     class Config:
         orm_mode = True

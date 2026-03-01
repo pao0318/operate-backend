@@ -21,16 +21,35 @@ async def get_extracted_key_metrics(
     if not metrics_list:
         raise NotFoundException(f"Extracted key metrics for case {case_id} not found")
     
+    # Check if data contains the full metrics array (with infoLines)
+    all_metrics = []
+    for m in metrics_list:
+        if m.data and isinstance(m.data, list):
+            # This is the full metrics data with infoLines
+            for metric in m.data:
+                all_metrics.append({
+                    "name": metric.get("name"),
+                    "infoLines": metric.get("infoLines", []),
+                    "dataPoints": metric.get("dataPoints", {})
+                })
+        elif m.data and isinstance(m.data, dict):
+            # Individual metric with dataPoints only
+            all_metrics.append({
+                "name": m.name,
+                "infoLines": [],
+                "dataPoints": m.data
+            })
+    
+    # Remove duplicates by name, preferring entries with infoLines
+    seen = {}
+    for metric in all_metrics:
+        name = metric.get("name")
+        if name not in seen or (metric.get("infoLines") and not seen[name].get("infoLines")):
+            seen[name] = metric
+    
     return {
         "data": {
             "caseId": case_id,
-            "metrics": [
-                {
-                    "name": m.name,
-                    "description": m.description,
-                    "dataPoints": m.data or {}
-                }
-                for m in metrics_list
-            ]
+            "metrics": list(seen.values())
         }
     }
